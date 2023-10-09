@@ -1,0 +1,269 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: black;
+    color: white;
+}
+
+span {
+    display: block;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: sans-serif;
+    padding: 10px 300px;
+}
+
+.navbar .menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px 10px 100px;
+    font-size: 10px;
+    gap: 45px;
+}
+
+.coffee {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding: 100px;
+}
+
+.section1 {
+    font-size: 30px;
+    font-weight: 600;
+    padding: 30px;
+}
+
+.section2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+}
+
+.section2 img {
+    width: 30%;
+}
+
+.section3 {
+    font-size: 30px;
+    font-weight: 600;
+    padding: 30px;
+}
+
+.button button {
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: goldenrod;
+    color: black;
+    padding: 10px;
+}
+
+.cup {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    flex-direction: row;
+    color: white;
+    gap: 50px;
+    padding: 40px 200px;
+}
+
+.cup1 {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.cup1 h1 {
+    font-size: 40px;
+}
+
+.cup1 p {
+    padding: 20px 5px;
+    font-size: 17px;
+}
+
+.cup2 {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.cup2 img {
+    width: 60%;
+}
+
+.cup .button1 {
+    padding: 20px 0 10px;
+}
+
+.button1 button {
+    font-size: 18px;
+    border: none;
+    outline: none;
+    background-color: goldenrod;
+    color: black;
+    padding: 10px;
+}
+
+.Products {
+    background-color: black;
+    color: white;
+    padding: 100px 0 100px 100px;
+    font-size: 30px;
+}
+
+.mocha {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    background-color: black;
+    color: white;
+    gap: 200px;
+    padding: 100px;
+
+}
+
+.mocha1,
+.mocha2,
+.mocha3 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    border: 1px solid goldenrod;
+    flex-direction: column;
+    gap: 50px;
+    padding: 50px;
+}
+
+.items1,
+.items2,
+.items3 {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.items1 button {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background-color: goldenrod;
+    color: black;
+    padding: 10px;
+}
+
+.button1,
+.button2,
+.button3 {
+    padding: 50px 0 0 0;
+}
+
+.items2 button {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background-color: goldenrod;
+    color: black;
+    padding: 10px;
+}
+
+.items3 button {
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background-color: goldenrod;
+    color: black;
+    padding: 10px;
+}
+
+.line {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    
+}
+
+hr {
+    width: 30%;
+    height: 2px;
+    background-color: goldenrod;
+}
+.footer{
+    width: 100%;
+    color: white;
+    display: flex;
+    justify-content: flex-start;
+    /* align-items: center; */
+    flex-direction: row;
+    gap: 80px;
+    padding: 75px 200px 75px 300px;
+}
+.about-us span{
+    display: inline;
+    color: gold;
+}
+.about-us h1{
+    padding: 0 0 0 60px;
+}
+.about-us p{
+    padding: 20px 10px 0 0;
+}
+.contact-us span{
+    display: inline;
+    color: gold;
+}
+.contact-us h1{
+    padding: 0 0 0 60px;
+}
+.contact-us p{
+    padding: 20px 5px;
+}
+.opening-hourse span{
+    display: inline;
+    color: gold;
+}
+.opening-hourse p{
+    padding: 20px 5px;
+}
+.line1 {
+    width: 100%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    
+}
+hr {
+    width: 30%;
+    height: 2px;
+    background-color: goldenrod;
+}
+.copyright{
+    color: white;
+    display: flex;
+    justify-content: center;
+}
+.copyright span{
+    display: inline;
+    color: gold;
+}
