@@ -17,6 +17,7 @@ pipeline {
                     IMAGE_TAG = "${IMAGE_NAME}:${TAG}"
                     sh "docker build -t ${IMAGE_TAG} ."
                     sh "docker stop coffee && docker rm coffee"
+                    sh "docker rmi ${IMAGE_TAG}"
                     sh "docker run -dit --name coffee -p 9000:80 ${IMAGE_TAG}"
                 }
             }
