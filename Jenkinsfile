@@ -32,16 +32,6 @@ pipeline {
                 }
             }
         }
-        stage('SonarQube Analysis') {
-    environment {
-        SONAR_URL = "http://13.233.200.63:9000"
-    }
-    steps {
-        withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
-            sh 'sonar-scanner -Dsonar.projectKey=coffee -Dsonar.sources=. -Dsonar.host.url=${SONAR_URL} -Dsonar.login=$SONAR_AUTH_TOKEN'
-        }
-    }
-}
 
         stage('Login to Docker Hub') {
             steps {
