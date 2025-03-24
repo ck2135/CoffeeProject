@@ -33,20 +33,16 @@ pipeline {
             }
         }
         stage('SonarQube Analysis') {
-            steps {
-                script {
-                    withCredentials([string(credentialsId: SONARQUBE_CREDENTIALS_ID, variable: 'SONAR_TOKEN')]) {
-                        sh '''#!/bin/bash
-                        sonar-scanner \
-                          -Dsonar.projectKey=coffee \
-                          -Dsonar.sources=. \
-                          -Dsonar.host.url=http://13.233.200.63:9000/ \
-                          -Dsonar.login=$SONAR_TOKEN
-                        '''
-                    }
-                }
-            }
+    environment {
+        SONAR_URL = "http://13.233.200.63:9000"
+    }
+    steps {
+        withCredentials([string(credentialsId: 'sonarqube', variable: 'SONAR_AUTH_TOKEN')]) {
+            sh 'sonar-scanner -Dsonar.projectKey=coffee -Dsonar.sources=. -Dsonar.host.url=${SONAR_URL} -Dsonar.login=$SONAR_AUTH_TOKEN'
         }
+    }
+}
+
         stage('Login to Docker Hub') {
             steps {
                 script {
