@@ -16,7 +16,8 @@ pipeline {
                     TAG = "v${BUILD_NUMBER}"
                     IMAGE_TAG = "${IMAGE_NAME}:${TAG}"
                     sh "docker build -t ${IMAGE_TAG} ."
-                    sh "docker stop coffee && docker rm coffee"
+                    sh "docker stop coffee || true"
+                    sh "docker rm coffee || true"
                     sh "docker run -dit --name coffee -p 9001:80 ${IMAGE_TAG}"
                 }
             }
