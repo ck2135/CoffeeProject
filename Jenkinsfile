@@ -10,14 +10,23 @@ pipeline {
                 git 'https://github.com/ck2135/CoffeeProject.git'
             }
         }
-        stage('Build Docker Image') {
+      stage('Build Docker Image') {
             steps {
                 script {
                     TAG = "v${BUILD_NUMBER}"
                     IMAGE_TAG = "${IMAGE_NAME}:${TAG}"
-                    sh "docker build -t ${IMAGE_TAG} ."
+
+                    // Stop and remove any existing 'coffee' container
                     sh "docker stop coffee || true"
                     sh "docker rm coffee || true"
+
+                    // Remove old images (except the latest one)
+                    sh """
+                    docker images --format '{{.Repository}}:{{.Tag}} {{.ID}}' | grep '${IMAGE_NAME}:' | sort -r | tail -n +2 | awk '{print \$2}' | xargs -r docker rmi -f
+                    """
+
+                    // Build and run the new container
+                    sh "docker build -t ${IMAGE_TAG} ."
                     sh "docker run -dit --name coffee -p 9001:80 ${IMAGE_TAG}"
                 }
             }
@@ -36,11 +45,6 @@ pipeline {
                 script {
                     sh "docker push ${IMAGE_TAG}"
                 }
-            }
-        }
-        stage('Cleanup') {
-            steps {
-                sh "docker rmi ${IMAGE_TAG}"
             }
         }
     }
