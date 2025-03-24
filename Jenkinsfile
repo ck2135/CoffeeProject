@@ -18,13 +18,13 @@ pipeline {
                     def IMAGE_TAG = "${IMAGE_NAME}:${TAG}"
 
                     // Stop and remove any existing 'coffee' container
-                    sh "docker stop coffee || true"
-                    sh "docker rm coffee || true"
+                    sh 'docker stop coffee || true'
+                    sh 'docker rm coffee || true'
 
                     // Remove old images (except the latest one)
-                    sh """
-                    docker images --format '{{.Repository}}:{{.Tag}} {{.ID}}' | grep '${IMAGE_NAME}:' | sort -r | tail -n +2 | awk '{print \$2}' | xargs -r docker rmi -f || true
-                    """
+                    sh '''
+                    docker images --format '{{.Repository}}:{{.Tag}} {{.ID}}' | grep '${IMAGE_NAME}:' | sort -r | tail -n +2 | awk '{print $2}' | xargs -r docker rmi -f || true
+                    '''
 
                     // Build and run the new container
                     sh "docker build -t ${IMAGE_TAG} ."
@@ -36,13 +36,13 @@ pipeline {
             steps {
                 script {
                     withCredentials([string(credentialsId: SONARQUBE_CREDENTIALS_ID, variable: 'SONAR_TOKEN')]) {
-                        sh """
+                        sh '''#!/bin/bash
                         sonar-scanner \
                           -Dsonar.projectKey=coffee \
                           -Dsonar.sources=. \
                           -Dsonar.host.url=http://13.233.200.63:9000/ \
-                          -Dsonar.login=${SONAR_TOKEN}
-                        """
+                          -Dsonar.login=$SONAR_TOKEN
+                        '''
                     }
                 }
             }
@@ -51,7 +51,7 @@ pipeline {
             steps {
                 script {
                     withCredentials([usernamePassword(credentialsId: DOCKER_CREDENTIALS_ID, usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                        sh "echo ${DOCKER_PASS} | docker login -u ${DOCKER_USER} --password-stdin"
+                        sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
                     }
                 }
             }
