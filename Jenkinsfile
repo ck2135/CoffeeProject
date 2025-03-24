@@ -27,7 +27,7 @@ pipeline {
 
                     // Build and run the new container
                     sh "docker build -t ${IMAGE_TAG} ."
-                    sh "docker run -dit --name coffee -p 9001:80 ${IMAGE_TAG}"
+                    sh "docker run -dit --name coffee -p 8001:80 ${IMAGE_TAG}"
                 }
             }
         }
